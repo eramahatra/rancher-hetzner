@@ -22,5 +22,7 @@ runcmd:
   export DATA="{\"server\":$SERVER_ID}"
   # assign the free floating ip to the server
   curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d $DATA $ENDPOINT
+  # and set up the network interface
+  ip addr add $FREE_IP dev eth0
   sysctl -w net.ipv6.conf.all.disable_ipv6=1
 ```
