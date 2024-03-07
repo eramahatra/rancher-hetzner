@@ -1,8 +1,9 @@
+### When scaling your rancher nodes on hetzner, it will be given a random ip address from the specified location.
+### This cloud init configuration will assign an IP from your existing floating-ip if any
+```
 #cloud-config
 # run commands
 # default: none
-# When scaling your rancher nodes on hetzner, it will be given a random ip address from the specified location.
-# this cloud init configuration will assign an IP from your existing floating-ip if any
 
 runcmd:
  - |
@@ -22,4 +23,4 @@ runcmd:
   # assign the free floating ip to the server
   curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d $DATA $ENDPOINT
   sysctl -w net.ipv6.conf.all.disable_ipv6=1
-  
+```
