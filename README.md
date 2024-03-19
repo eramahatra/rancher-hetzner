@@ -7,19 +7,6 @@
 
 bootcmd:
  - |
-  wget -O - https://raw.githubusercontent.com/eramahatra/rancher-hetzner/main/bootcmd.sh | bash 
+  wget -O - https://raw.githubusercontent.com/eramahatra/rancher-hetzner/main/setPrimaryIp.sh | bash 
 
-# create network file
-config:
-  user.network-config: |
-    version: 1
-    config:
-      - type: physical
-        name: eth0
-        subnets:
-          - type: static
-            ipv4: true
-            address: $FREE_IP
-            netmask: 255.255.255.0
-            gateway: 172.31.1.1
-            control: auto
+```

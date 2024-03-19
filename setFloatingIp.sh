@@ -1,15 +1,16 @@
-#!/bin.bash
+#:!/bin.bash
 
 #cloud-config
 # run commands
 # default: none
 
 apt update && apt install jq -y
-export TOKEN={HETZNER_API_TOKEN}
+export TOKEN={{hetzner_token}}
 # get the server id of the server which has no floating ip
 export FILTER=".servers[] | select(.labels.nodegroup == \"transcoder\") | select (.public_net.floating_ips | length == 0) .id"
 export SERVER_ID=$(curl -s -H "Authorization: Bearer $TOKEN" "https://api.hetzner.cloud/v1/servers" | jq -r "$FILTER")
-# get the first free available floating ip
+
+# get the first free available primary IP
 export FILTER="[.floating_ips[] | {ip,server,id} | select (.server == null)][0] | {ip: .ip, id: .id}"
 export ENDPOINT=https://api.hetzner.cloud/v1/floating_ips
 export IP_DATA=$(curl -s -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" $ENDPOINT | jq -r "$FILTER")
