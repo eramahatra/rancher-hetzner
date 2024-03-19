@@ -5,7 +5,6 @@
 # default: none
 
 apt update && apt install jq -y
-export TOKEN={{hetzner_token}}
 # get the server id of the server which has no floating ip
 export FILTER=".servers[] | select(.labels.nodegroup == \"transcoder\") | select (.public_net.floating_ips | length == 0) .id"
 export SERVER_ID=$(curl -s -H "Authorization: Bearer $TOKEN" "https://api.hetzner.cloud/v1/servers" | jq -r "$FILTER")
