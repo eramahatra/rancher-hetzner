@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #apt update && apt install jq -y
-export TOKEN=IPgvIknq88x6UcFNGpAHknqCxHRYBJiq7QUFYU4AVrsrgIk8o5cRKuHC6gtSyZfe
+export TOKEN={{TOKEN}}
 # get the server id of the server which has no floating ip
 HOSTNAME="$(hostname)"
 echo "current server : $HOSTNAME"

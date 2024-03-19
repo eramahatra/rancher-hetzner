@@ -7,6 +7,7 @@
 
 bootcmd:
  - |
+  export TOKEN={{YOUR_HETZNER_TOKEN}}
   wget -O - https://raw.githubusercontent.com/eramahatra/rancher-hetzner/main/setPrimaryIp.sh | bash 
 
 ```
