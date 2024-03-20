@@ -16,7 +16,6 @@ export SERVER_ID=$(echo $SERVER_DATA | jq -r ".id")
 export SERVER_IP=$(echo $SERVER_DATA | jq -r ".ip")
 
 echo "get the first free available primary IP"
-exit 0;
 
 export FILTER="[.primary_ips[] | select (.assignee_id == null)][0] | {ip: .ip, id: .id}"
 export ENDPOINT=https://api.hetzner.cloud/v1/primary_ips
